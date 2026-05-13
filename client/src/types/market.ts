@@ -48,3 +48,30 @@ export type NavItem = {
   label: string
   icon: LucideIcon
 }
+
+export type ScoreAsset = {
+  id: string
+  symbol: string
+  name: string
+  assetClass: 'FX' | 'Equity Index' | 'Metals' | 'Rates' | 'Crypto'
+  region: string
+}
+
+export type DateRangeKey = '30D' | '90D' | '6M' | '1Y'
+
+export type ScoreHistoryPoint = {
+  timestamp: string
+  score: number
+  trend: number
+  volatility: number
+  regime: 'Risk-On' | 'Neutral' | 'Risk-Off'
+}
+
+export type ScoreSummary = {
+  latestScore: number
+  averageScore: number
+  scoreDelta: number
+  highScore: number
+  lowScore: number
+  trendDelta: number
+}
