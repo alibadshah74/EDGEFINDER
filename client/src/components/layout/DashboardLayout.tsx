@@ -8,6 +8,8 @@ import { generateMarketData } from '../../mock-data/marketData'
 
 const allMarketData = generateMarketData(64)
 const ScoreIndicatorPage = lazy(() => import('../score-indicator/ScoreIndicatorPage').then((module) => ({ default: module.ScoreIndicatorPage })))
+const StockIndicesDashboard = lazy(() => import('../stock-indices/StockIndicesDashboard').then((module) => ({ default: module.StockIndicesDashboard })))
+const MetalsDashboard = lazy(() => import('../metals/MetalsDashboard').then((module) => ({ default: module.MetalsDashboard })))
 
 export function DashboardLayout() {
   const [loading, setLoading] = useState(true)
@@ -40,6 +42,14 @@ export function DashboardLayout() {
           {activeNav === 'EF Score Indicator' ? (
             <Suspense fallback={<LoadingSkeleton />}>
               <ScoreIndicatorPage />
+            </Suspense>
+          ) : activeNav === 'Stock Indices' ? (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <StockIndicesDashboard />
+            </Suspense>
+          ) : activeNav === 'Gold & Silver' ? (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <MetalsDashboard />
             </Suspense>
           ) : loading ? (
             <LoadingSkeleton />
